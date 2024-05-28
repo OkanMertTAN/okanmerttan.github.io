@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <meta name="author" content="okanmerttan">
+    <meta name="author" content="okan mert tan">
+    <meta name="author" content="Okan Mert TAN">
+    <meta name="keywords" content="Siber Güvenlik, Kişisel Web Sitesi, Okan Mert TAN, Güvenlik Araştırmaları">
+
+
+    <script>
+        function toggleMenu() {
+            var menuIcon = document.querySelector('.menu-icon');
+            var links = document.querySelectorAll('nav a');
+            menuIcon.classList.toggle('active');
+            links.forEach(link => {
+                link.style.display = link.style.display === 'block' ? 'none' : 'block';
+            });
+        }
+    </script>
+</head>
+
+<body>
+
+    <nav>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <a href="#anasayfa">Ana Sayfa</a>
+        <a href="#about">Hakkında</a>
+        <a href="#education">Eğitim Bilgileri</a>
+        <a href="#competencies">Yetkinlikler</a>
+        <a href="#contact">İletişim</a>
+    </nav>
+
+<!-- Container -->
+<div class="container">
+
+    <!-- Home Page -->
+    <div id="anasayfa" class="home pageLayout">
+        <div class="text">
+
+            <span style='font-size:30px;'>&#128075;</span>
+            <h1 style="font-size: 350%;">Okan Mert Tan</h1>
+            <p style="font-size: 15px; font-style: italic;">
+                <b>Siber Güvenlik</b> Meraklısı ve <b>Yönetim Bilişim Sistemi</b> Öğrencisi
+            </p>
+            <div>
+                <a href="https://www.instagram.com/okanmert.tan/" target="_blank">
+                    <img src="Foto/instagram.png" style="height: 40px;width: 40px;" alt="instagram_logo">
+                </a>
+                <a href="https://www.linkedin.com/in/okan-mert-tan-810a7b216/" target="_blank">
+                    <img src="Foto/linkedin.png" style="height: 40px;width: 40px;" alt="linkedin_logo">
+                </a>
+                <a href="https://tryhackme.com/p/okanmerttan" target="_blank">
+                    <img src="Foto/tryhackmeLogo.png" style="height: 40px;width: 40px;" alt="tryhackme_logo">
+                </a>
+                <a href="mailto:okanmerttan@gmail.com" target="_blank">
+                    <img src="Foto/gmail.png" style="height: 40px;width: 40px;" alt="gmail_logo">  
+                  </a>
+            </div>
+        </div>
+        <div class="image">
+            <img src="Foto/profil.jpeg" alt="profil_logo">
+        </div>
+    </div>
+
+    
+    <hr>
+    <!-- About Page -->
+    <div id="about" class="about pageLayout">
+        <h2 style="text-align: center;">Hakkında</h2>
+
+        <p>Merhaba ben Okan Mert,</p>
+        <p>
+             Kendimi bildim bileli teknolojiye hem ilgim vardı. Ancak bazı koşullardan 
+            dolayı çocukluğumda bu ilgimle pek de alakalı olamadım. 2021 yılında ilk kez programlamayla 
+            karşılaştım. Bu karşılaşma, bir YouTube kanalının CryEngine motoru ile nasıl oyun kodlanacağını gösterdiği bir video ile oldu. 
+            Daha sonra biraz araştırma yaparak Unity/C# teknolojilerini öğrenmeye karar verdim. İşin bilişim teknolojileri kısmı hoşuma gitmişti ama aynısını oyun geliştirme adına söyleyemeyeceğim. 
+            Daha sonra sırasıyla web/mobil geliştirme, yapay zeka ve veri analistliği gibi çeşitli alanlara baktıktan sonra kariyer rotamı belirledim. Bu süreç yaklaşık 2 yılımı aldı.
+        </p>
+        <p>
+             2023 yılının son aylarına doğru siber güvenlik alanında uzmanlaşmaya karar verdim. 
+            Teknolojiye ilgim vardı, fakat işin bir de siber boyutunu, yani arka planında neler işlediğini 
+            görünce ilgim daha da arttı. En basit dosya transferinde bile o kadar çok protokol ve mimari yapı 
+            kullanılıyor ki... Açıkçası benim gibi öğrenme meraklısı ve çapraz okumayı/anlamayı seven bir insan için bulunmaz bir bilgi hazinesi vardı. Şu anda, işin kırmızı takım ve 
+            mavi takım konularını öğrendikten sonra işin bir de mimari kısımlarını öğrenmek istiyorum.
+        </p>
+        <p>
+             Yukarıda yazdığım sebeplerden ötürü okumakta olduğun sağlık bölümünü bıraktım. Şimdi ise Yönetim Bilişim Sistemleri okuyorum.
+        </p>
+    </div>
+
+
+    <hr>
+<!-- Eğitim Bilgileri -->
+<div id="education" class="education pageLayout">
+    <h2>Eğitim Bilgileri</h2>
+
+    <!-- Okul Bilgisi 1 -->
+    <div class="school">
+        <div class="logo">
+            <a href="https://turtep.edu.tr/" target="_blank">
+                <img src="Foto/Ahmet_Yesevi_Üniversitesi_logosu.jpg" alt="Okul 1 Logo">
+            </a>    
+        </div>
+        <div class="details">
+            <h3><b>Ahmet Yesevi Üniversitesi</b></h3>
+            <p>Fakülte:<strong>Mühendislik Fakültesi</strong></p>
+            <p>Bölüm:<strong>Yönetim Bilişim Sistemleri</strong></p>
+            <p><strong>2023</strong>/<strong>2027</strong></p>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <!-- Okul Bilgisi 2 -->
+    <div class="school">
+        <div class="logo">
+            <a href="https://www.atlas.edu.tr/" target="_blank">
+                <img src="Foto/atlaslogo.png" alt="Okul 2 Logo">
+            </a>
+        </div>
+        <div class="details">
+            <h3><strong>İstanbul Atlas Üniversitesi</strong></h3>
+            <p>Fakülte:<strong>Meslekyüksek Okulu</strong></p>
+            <p>Bölüm:<strong>Dezenfeksiyon, Sterilizasyon ve Antisepsi Teknikerliği</strong></p>
+            <p><strong>2021</strong>/<strong>2022</strong></p>
+            <span style="font-size: 10px;">Not: Bu bölümü yarıda bırakıldı.</span>
+        </div>
+    </div>
+
+    <div id="competencies" class="pageLayout">
+        <h2>Yetkinlikler</h2>
+        <div>
+            <div class="listCss">
+                <h4>Bilgisayar Bilgisi</h4>
+                    <ul>
+                        <li>Ağ Protokolleri</li>
+                        <li>Ağ Topolojisi/Bileşenleri</li>
+                        <li>Malware Bilgisi (Temel Düzey)</li>
+                        <li>Linux/Windows Komut Satırı</li>
+                        <li>Firewalls/Güvenlik Duvarları (Orta)</li>
+                        <li>Windows/Linux Yetki Yükseltme (Orta)</li>
+                        <li>Adli Bilişim(Temel/Orta)</li>
+                        <li>Kriptoloji (Orta)</li>
+                        <li>OWASP Web Top 10</li>
+                    </ul>
+            </div>
+            <br>
+            <div class="listCss">
+                <h4>Teknolojiler</h4>
+                    <ul style="padding-left:20px; list-style-position: inside;">
+                        <li>Python&nbsp;</li>
+                        <li>Bash-Script</li>
+                        <li>Nmap&nbsp;</li>
+                        <li>Burp Suite</li>
+                        <li>Metasploit</li>
+                        <li>WireShark&nbsp;</li>
+                        <li>Active Directory (Temel Düzey)</li>
+                        <li>Nessus (Temel Düzey)</li>
+                        <li>Autopsy</li>
+                        <li>HTML/CSS</li>
+                    </ul>
+            </div>
+            <br>
+            <div class="listCss"> 
+                <h4>Yabancı dil</h4>
+                <ul>
+                    <li>İngilizce A2</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+        <div id="contact" class="pageLayout">
+            <h4>İletişim</h4>
+            <p>Yapım Aşamasında</p>
+        </div>
+
+</div>
+
+
+<!-- Footer -->
+<div class="footer">
+    &copy; 2024 Okan Mert Tan
+</div>
+
+</body>
+</html>
