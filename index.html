@@ -1,414 +1,544 @@
 <!DOCTYPE html>
 <html lang="tr">
-
 <head>
-    <meta charset="utf-8">
-    <title>Okan Mert TAN</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta name="author" content="okanmerttan">
-    <meta name="author" content="okan mert tan">
-    <meta name="author" content="Okan Mert TAN">
-    <meta name="keywords" content="Siber Güvenlik, Kişisel Web Sitesi, Okan Mert TAN, Güvenlik Araştırmaları">
-    
-    <!-- Favicon -->
-    <link href="img/Logo_1.png" rel="icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Okan Mert TAN | Sistem & Ağ Yöneticisi</title>
+    <meta name="description" content="Okan Mert TAN - Sistem Yöneticisi ve Ağ Altyapı Uzmanı Kişisel Web Sitesi">
+    <link rel="icon" href="img/Logo_1.png">
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* --- DEĞİŞKENLER & RESET --- */
+        :root {
+            --primary: #2563eb;       /* Canlı Kurumsal Mavi */
+            --primary-dark: #1e40af;
+            --secondary: #64748b;     /* Gri Metin */
+            --dark: #0f172a;          /* Başlıklar */
+            --light: #f8fafc;         /* Arka Plan */
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --shadow: 0 10px 40px -10px rgba(0,0,0,0.08);
+            --font-main: 'Manrope', sans-serif;
+        }
 
-    <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: var(--font-main);
+            background-color: var(--light);
+            color: var(--secondary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        h1, h2, h3, h4, h5 { color: var(--dark); font-weight: 700; line-height: 1.2; }
+        section { padding: 6rem 8%; }
+
+        /* --- BUTONLAR --- */
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            margin-left: 1rem;
+        }
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* --- HEADER & NAV --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 1rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; color: var(--dark); font-size: 1.2rem; }
+        .logo img { height: 40px; }
+
+        nav ul { display: flex; gap: 2.5rem; }
+        nav a { font-weight: 500; font-size: 0.95rem; color: var(--dark); }
+        nav a:hover { color: var(--primary); }
+        
+        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--dark); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px; /* Header payı */
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            position: relative;
+        }
+        
+        .hero-content { flex: 1; padding-right: 3rem; }
+        .hero-tag {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero h1 { font-size: 3.5rem; margin-bottom: 1.5rem; letter-spacing: -1px; }
+        .hero p { font-size: 1.15rem; margin-bottom: 2.5rem; max-width: 600px; color: #475569; }
+        
+        .hero-img { flex: 1; display: flex; justify-content: flex-end; position: relative; }
+        .hero-img img {
+            width: 400px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 30px;
+            box-shadow: 20px 20px 0px rgba(37, 99, 235, 0.1);
+            z-index: 2;
+        }
+        
+        /* Arka plan süslemeleri */
+        .shape { position: absolute; border-radius: 50%; z-index: 1; }
+        .shape-1 { width: 300px; height: 300px; background: #bfdbfe; filter: blur(80px); top: 20%; right: 5%; opacity: 0.5; }
+
+        /* --- SPECIALTIES (KARTLAR) --- */
+        .specialties { margin-top: -80px; padding-top: 0; z-index: 10; position: relative; }
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: 0.3s;
+        }
+        .card:hover { transform: translateY(-10px); border-color: var(--primary); }
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: #eff6ff;
+            color: var(--primary);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .card h3 { font-size: 1.25rem; margin-bottom: 1rem; }
+        .card p { font-size: 0.95rem; }
+
+        /* --- ABOUT --- */
+        .about-container { display: flex; gap: 4rem; align-items: flex-start; }
+        .about-text { flex: 1; }
+        .about-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .about-text h2 { font-size: 2.5rem; margin-bottom: 2rem; }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .info-item h4 { font-size: 1rem; margin-bottom: 0.2rem; }
+        .info-item span { font-size: 0.9rem; color: var(--primary); font-weight: 600; }
+
+        /* --- SKILLS (MODERN BAR) --- */
+        .skills-section { background: var(--white); }
+        .skill-wrapper { margin-bottom: 1.5rem; }
+        .skill-header { display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-weight: 600; color: var(--dark); }
+        .progress-bar {
+            height: 10px;
+            background: #f1f5f9;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .progress {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 5px;
+            width: 0;
+            transition: width 1.5s ease-in-out;
+        }
+
+        /* --- RESUME --- */
+        .resume-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+        .resume-col h3 { font-size: 1.5rem; margin-bottom: 2rem; display: flex; align-items: center; gap: 10px; }
+        
+        .timeline-box {
+            padding-left: 2rem;
+            border-left: 2px solid var(--border);
+            position: relative;
+            padding-bottom: 3rem;
+        }
+        .timeline-box::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+        .timeline-date {
+            background: #eff6ff;
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 0.8rem;
+        }
+        .timeline-box h4 { font-size: 1.1rem; margin-bottom: 0.3rem; }
+        .timeline-box h5 { font-size: 0.95rem; font-weight: 500; color: #64748b; margin-bottom: 1rem; }
+
+        /* --- CONTACT --- */
+        .contact { background: #f8fafc; text-align: center; }
+        .contact-box {
+            background: var(--white);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+        .form-group { margin-bottom: 1.5rem; text-align: left; }
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: #f8fafc;
+            font-family: var(--font-main);
+            transition: 0.3s;
+        }
+        .form-control:focus { outline: none; border-color: var(--primary); background: #fff; }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--dark);
+            color: #94a3b8;
+            padding: 3rem 8%;
+            text-align: center;
+        }
+        .social-links { margin-bottom: 1.5rem; }
+        .social-links a {
+            display: inline-flex;
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            margin: 0 5px;
+            color: var(--white);
+            transition: 0.3s;
+        }
+        .social-links a:hover { background: var(--primary); transform: translateY(-3px); }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 992px) {
+            .hero { flex-direction: column; text-align: center; padding-top: 120px; }
+            .hero-content { padding-right: 0; margin-bottom: 3rem; }
+            .hero-img { justify-content: center; }
+            .hero-img img { width: 300px; height: 300px; }
+            .about-container { flex-direction: column; }
+            .resume-grid { grid-template-columns: 1fr; }
+            
+            nav ul {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                display: none;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            }
+            nav ul.active { display: flex; }
+            .menu-toggle { display: block; }
+        }
+    </style>
 </head>
+<body>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="51">
-    <!-- Navbar Start -->
-    <nav class="navbar fixed-top shadow-sm navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-lg-5">
-        <a href="index.html" class="navbar-brand ml-lg-3">
-            <img src="img/Logo_2.png" alt="Logo" style="height: 50px; width: 50px;">
+    <header>
+        <a href="#" class="logo">
+            <img src="img/Logo_2.png" alt="Logo">
+            <span>OKAN MERT TAN</span>
         </a>
-        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse px-lg-3" id="navbarCollapse">
-            <div class="navbar-nav m-auto py-0">
-                <a href="#home" class="nav-item nav-link active">Ana Sayfa</a>
-                <a href="#about" class="nav-item nav-link">Hakkında</a>
-                <a href="#qualification" class="nav-item nav-link">ÖzGeçmiş</a>  
-                <a href="#skill" class="nav-item nav-link">Beceri</a>
-                <a href="#contact" class="nav-item nav-link">İletişim</a>
+        <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#home">Ana Sayfa</a></li>
+                <li><a href="#about">Hakkında</a></li>
+                <li><a href="#skills">Yetenekler</a></li>
+                <li><a href="#resume">Özgeçmiş</a></li>
+                <li><a href="#contact">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="shape shape-1"></div>
+        <div class="hero-content">
+            <span class="hero-tag">Sistem & Ağ Yönetimi</span>
+            <h1>Güvenilir IT Altyapı Çözümleri</h1>
+            <p>Merhaba, ben Okan Mert. İşletim sistemleri, sunucu mimarileri ve ağ protokolleri konusunda uzmanlaşmış, siber güvenlik farkındalığına sahip bir <strong>Sistem Yöneticisiyim.</strong></p>
+            <div class="hero-btns">
+                <a href="#contact" class="btn btn-primary">İletişime Geç</a>
+                <a href="tanokanmert_Cv.pdf" target="_blank" class="btn btn-outline">CV İndir <i class="fas fa-download"></i></a>
             </div>
         </div>
-    </nav>
-    <!-- Navbar End -->
+        <div class="hero-img">
+            <img src="img/profil.jpeg" alt="Okan Mert Tan">
+        </div>
+    </section>
 
-
-    <!-- Video Modal Start -->
-    <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>        
-                    <!-- 16:9 aspect ratio -->
-                    <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="" id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
-                    </div>
-                </div>
+    <section class="specialties">
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-server"></i></div>
+                <h3>Sistem Yönetimi</h3>
+                <p>Windows ve Linux sunucuların kurulumu, yönetimi ve Active Directory yapılandırmaları konusunda derinlemesine uzmanlık.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-network-wired"></i></div>
+                <h3>Ağ Mimarisi</h3>
+                <p>TCP/IP protokolleri, switch/router konfigürasyonları ve güvenli ağ topolojilerinin oluşturulması.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3>Güvenlik Altyapısı</h3>
+                <p>Log analizi, firewall (Fortigate) yönetimi ve sistem sıkılaştırma ile altyapı güvenliğinin sağlanması.</p>
             </div>
         </div>
-    </div>
-    <!-- Video Modal End -->
+    </section>
 
-
-    <!-- Header Start -->
-    <div class="container-fluid bg-primary d-flex align-items-center mb-5 py-5" id="home" style="min-height: 100vh;">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-5 px-5 pl-lg-0 pb-5 pb-lg-0">
-                    <img class="img-fluid w-100 rounded-circle shadow-sm" src="img/profil.jpeg" alt="profil">
-                </div>
-                <div class="col-lg-7 text-center text-lg-left">
-                    <h1 class="display-3 text-uppercase text-primary mb-2" style="-webkit-text-stroke: 2px #ffffff;">Okan Mert Tan</h1>
-                    <h1 class="typed-text-output d-inline font-weight-lighter text-white"></h1>
-                    <div class="typed-text d-none">Siber Güvenlik Uzmanı, YBS Öğrencisi, Sistem ve Ağ Uzmanı</div>
-                    <div>
-                        <a href="https://www.linkedin.com/in/okan-mert-tan-810a7b216/" target="_blank">
-                            <img src="img/linkedin.png" style="height: 40px;width: 40px;" alt="linkedin_logo">
-                        </a>
-                        <a href="https://tryhackme.com/p/okanmerttan" target="_blank">
-                            <img src="img/tryhackmeLogo.png" style="height: 40px;width: 40px;" alt="tryhackme_logo">
-                        </a>
-                        <a href="https://www.youtube.com/@IT-TECH-OKANMERTTAN" target="_blank">
-                            <img src="img/youtube.png" style="height: 40px;width: 40px;" alt="youtube_logo">
-                        </a>
-                        <a href="https://www.coursera.org/user/fa811804726ce054fc675405adc1ed90" target="_blank">
-                            <img src="img/coursera-rebrand-logo-square.png" style="height: 40px;width: 40px;" alt="coursera">
-                        </a>
-                    </div>
-                    <div class="d-flex align-items-center justify-content-center justify-content-lg-start pt-5">
-                        <a href="tanokanmert_Cv.pdf" class="btn btn-outline-light mr-5"  target="_blank">CV Görüntüleme</a>
-                        <button type="button" class="btn-play" data-toggle="modal"
-                            data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-target="#videoModal">
-                            <span></span>
-                        </button>
-                        <h5 class="font-weight-normal text-white m-0 ml-4 d-none d-sm-block">Play Video</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Header End -->
-
-
-    <!-- About Start -->
-    <div class="container-fluid py-5" id="about">
-        <div class="container">
-            <div class="position-relative d-flex align-items-center justify-content-center">
-                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Hakkında</h1>
-                <h1 class="position-absolute text-uppercase text-primary">Hakkımda</h1>
-            </div>
-            <div class="row align-items-center">
-                <div class="col-lg-5 pb-4 pb-lg-0">
-                    <img class="img-fluid rounded w-100" src="img/profil.jpeg" alt="profil">
-                </div>
-                <div class="col-lg-7">
-                    <h3 class="mb-4">Siber Güvelik ve Sistem/Ağ Uzmanı</h3>
-                    <p>Merhaba, ben Okan Mert.</p>
-                    <p>
-                        &emsp;Teknolojiye olan ilgim, kendimi bildim bileli hayatımın önemli bir parçası olmuştur. Ancak, çocukluk yıllarımda bu ilgimi yeterince besleyemedim. 2021 yılında programlama dünyasına adım attım. 
-                    Bu, bir YouTube kanalının CryEngine motoru ile oyun kodlamayı anlattığı bir video sayesinde gerçekleşti. Bu deneyim, beni Unity ve C# teknolojilerini öğrenmeye yöneltti. 
-                    Bilişim teknolojilerine duyduğum ilgi hızla arttı, ancak oyun geliştirme konusunda aynı tutkuya sahip olmadığımı fark ettim.
+    <section id="about">
+        <div class="about-container">
+            <div class="about-text">
+                <span class="about-title">Biyografi</span>
+                <h2>Teknoloji Tutkusundan <br>Sistem Uzmanlığına</h2>
+                <p style="margin-bottom: 1.5rem; color: #475569;">
+                    2021 yılında yazılım dünyasına adım attıktan sonra, teknolojinin görünen yüzünden çok "arka planındaki" işleyişin beni daha çok heyecanlandırdığını fark ettim. En basit dosya transferinde bile arka planda çalışan karmaşık protokoller ve sunucu mimarileri, kariyer rotamı <strong>Sistem ve Ağ Yönetimi</strong> üzerine çizmemi sağladı.
                 </p>
-                <p>
-                    &emsp;Bu farkındalıktan sonra, web ve mobil geliştirme, yapay zeka ve veri analizi gibi çeşitli alanları keşfetmeye başladım. Yaklaşık iki yıllık bir süreç sonunda, kariyer rotamı netleştirdim. 
-                2023 yılının sonlarına doğru, siber güvenlik alanında uzmanlaşma kararı aldım. Teknolojiye duyduğum ilgi, siber güvenlik dünyasında karşılaştığım karmaşık ve heyecan verici yapılarla daha da derinleşti. 
-                En basit dosya transferinde bile kullanılan çeşitli protokoller ve mimari yapılar beni büyüledi. Öğrenmeye olan merakım ve analitik düşünme yeteneğim, bu alanda daha da ileri gitmemi sağladı. 
-                Şu anda, kırmızı ve mavi takım konularında uzmanlaştıktan sonra, siber güvenlik mimarisi üzerine yoğunlaşmak istiyorum.
+                <p style="margin-bottom: 1.5rem; color: #475569;">
+                    Ahmet Yesevi Üniversitesi Yönetim Bilişim Sistemleri bölümünde eğitimime devam ederken, sistemlerin kesintisiz ve güvenli çalışmasını sağlayan mimariler üzerine odaklanıyorum.
                 </p>
-                <p>
-                    &emsp;Bu nedenlerle, okumakta olduğum sağlık bölümünü bırakarak, kariyerime Yönetim Bilişim Sistemleri alanında devam etme kararı aldım. 
-                 Eğitimimi bu alanda sürdürerek, siber güvenlik ve bilişim teknolojileri konularında derinlemesine bilgi sahibi olmayı hedefliyorum.
-                </p>
-                    <div class="row mb-3">
-                        <div class="col-sm-6 py-2"><h6><strong>Tam İsim:</strong> <span class="text-secondary">Okan Mert TAN</span></h6></div>
-                        <div class="col-sm-6 py-2"><h6><strong>Derece:</strong> <span class="text-secondary">Lisans(Devam Ediyor)</span></h6></div>
-                        <div class="col-sm-6 py-2"><h6><strong>Email:</strong> <span class="text-secondary">okanmerttan@gmail.com</span></h6></div>
-                        <div class="col-sm-6 py-2"><h6><strong>Adres:</strong> <span class="text-secondary">İstanbul/Gaziosmanpaşa</span></h6></div>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <h4>Lokasyon</h4>
+                        <span>İstanbul, TR</span>
                     </div>
+                    <div class="info-item">
+                        <h4>E-Posta</h4>
+                        <span>okanmerttan@gmail.com</span>
+                    </div>
+                    <div class="info-item">
+                        <h4>Eğitim</h4>
+                        <span>Yönetim Bilişim Sis.</span>
+                    </div>
+                    <div class="info-item">
+                        <h4>İlgi Alanı</h4>
+                        <span>SysAdmin / Network</span>
+                    </div>
+                </div>
+            </div>
+            <div class="about-img" style="flex: 0.8;">
+                <img src="img/Logo_2.png" alt="Logo" style="width: 100%; opacity: 0.1; filter: grayscale(100%);">
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills-section">
+        <div style="text-align: center; margin-bottom: 4rem;">
+            <span class="about-title">YETKİNLİKLERİM</span>
+            <h2>Teknik Beceriler</h2>
+        </div>
+        
+        <div class="resume-grid">
+            <div>
+                <div class="skill-wrapper">
+                    <div class="skill-header"><span>Windows / Linux Server</span><span>90%</span></div>
+                    <div class="progress-bar"><div class="progress" style="width: 90%"></div></div>
+                </div>
+                <div class="skill-wrapper">
+                    <div class="skill-header"><span>Ağ Protokolleri (TCP/IP)</span><span>90%</span></div>
+                    <div class="progress-bar"><div class="progress" style="width: 90%"></div></div>
+                </div>
+                <div class="skill-wrapper">
+                    <div class="skill-header"><span>Active Directory</span><span>85%</span></div>
+                    <div class="progress-bar"><div class="progress" style="width: 85%"></div></div>
+                </div>
+                <div class="skill-wrapper">
+                    <div class="skill-header"><span>Donanım Bilgisi</span><span>75%</span></div>
+                    <div class="progress-bar"><div class="progress" style="width: 75%"></div></div>
+                </div>
+            </div>
+            <div>
+                <div class="skill-wrapper">
+                    <div class="skill-header"><span>SQL / Veritabanı</span><span>80%</span></div>
+                    <div class="progress-bar"><div class="progress" style="width: 80%"></div></div>
+                </div>
+                <div class="skill-wrapper">
+                    <div class="skill-header"><span>WireShark / Log Analizi</span><span>80%</span></div>
+                    <div class="progress-bar"><div class="progress" style="width: 80%"></div></div>
+                </div>
+                <div class="skill-wrapper">
+                    <div class="skill-header"><span>AWS / Bulut Sistemler</span><span>70%</span></div>
+                    <div class="progress-bar"><div class="progress" style="width: 70%"></div></div>
+                </div>
+                <div class="skill-wrapper">
+                    <div class="skill-header"><span>Python / Scripting</span><span>60%</span></div>
+                    <div class="progress-bar"><div class="progress" style="width: 60%"></div></div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- About End -->
+    </section>
 
+    <section id="resume" style="background: #f1f5f9;">
+        <div style="text-align: center; margin-bottom: 4rem;">
+            <span class="about-title">KARİYER YOLCULUĞUM</span>
+            <h2>Eğitim ve Deneyim</h2>
+        </div>
 
-    <!-- Qualification Start -->
-    <div class="container-fluid py-5" id="qualification">
-        <div class="container">
-            <div class="position-relative d-flex align-items-center justify-content-center">
-                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">ÖzGeçmiş</h1>
-                <h1 class="position-absolute text-uppercase text-primary">ÖzGeçmişim</h1>
-            </div>
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <h3 class="mb-4">Eğitimlerim</h3>
-                    <div class="border-left border-primary pt-2 pl-4 ml-2">
-                        <div class="position-relative mb-6">
-                            <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
-                            <h5 class="font-weight-bold mb-1">Ahmet Yesevi Üniversitesi</h5>
-                            <p class="mb-2"><strong>Mühendislik Fakültesi - Yönetim Bilişim Sistemleri</strong> | <small>2023 - 2027</small></p>
-                            <p>Yönetim Bilişim Sistemleri bölümü, bilgi teknolojileri ve işletme yönetimi konularını bir araya getirerek, öğrencilere bilgi teknolojilerinin işletmeler için rekabet avantajı sağlamadaki rolünü anlatan bir bölümdür. </p>
-                        </div>
-                        <div class="position-relative mb-6">
-                            <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
-                            <h5 class="font-weight-bold mb-1">İstanbul Atlas Üniversitesi</h5>
-                            <p class="mb-2"><strong>Meslekyüksek Okulu - DSA Teknikerliği</strong> | <small>2021 - 2022</small> </p>
-                            <p>Dezenfeksiyon, Sterilizasyon ve Antisepsi Teknikerleri, sağlık sektöründe hastalara kullanılacak tıbbi aletlerin tekrar kullanıma hazırlanması gereken tüm basamakları teorik olarak bilen ve pratik olarak bunları yapabilecek beceriye sahip sağlık teknik elemanlarıdır.</p>
-                            <p><strong>(Bu bölümü yarısında bıraktım.)</strong></p>
-                        </div>
-                    </div>
+        <div class="resume-grid">
+            <div class="resume-col">
+                <h3><i class="fas fa-graduation-cap" style="color:var(--primary)"></i> Eğitim</h3>
+                <div class="timeline-box">
+                    <span class="timeline-date">2023 - Devam</span>
+                    <h4>Yönetim Bilişim Sistemleri</h4>
+                    <h5>Ahmet Yesevi Üniversitesi</h5>
+                    <p>IT altyapıları, veri tabanları ve işletme yönetimi üzerine lisans eğitimi.</p>
                 </div>
-                <div class="col-lg-6">
-                    <h3 class="mb-2">Portföy</h3>
-                    <div class="border-left border-primary pt-2 pl-4 ml-2">
-                        
-                        <h6>Daha Sonra Eklenecek</h6>
-                        
-                    </div>
+                <div class="timeline-box">
+                    <span class="timeline-date">2021 - 2022</span>
+                    <h4>DSA Teknikerliği (Terk)</h4>
+                    <h5>İstanbul Atlas Üniversitesi</h5>
+                    <p>Sağlık teknolojileri üzerine eğitim aldım, kariyer hedefimi Bilişim sektörüne çevirdiğim için ayrıldım.</p>
+                </div>
+            </div>
+
+            <div class="resume-col">
+                <h3><i class="fas fa-briefcase" style="color:var(--primary)"></i> Deneyim & Portföy</h3>
+                <div class="timeline-box">
+                    <span class="timeline-date">Güncel</span>
+                    <h4>Kişisel Gelişim & Lab Çalışmaları</h4>
+                    <h5>Home Lab / Sanal Ortamlar</h5>
+                    <p>Active Directory kurulumları, Ağ topolojisi simülasyonları ve Linux sunucu yönetimi üzerine pratik çalışmalar.</p>
+                </div>
+                <div class="timeline-box">
+                    <span class="timeline-date">Gelecek</span>
+                    <h4>Portföy Eklenecek</h4>
+                    <h5>Projeler</h5>
+                    <p>Tamamlanan sistem mimarisi projeleri burada listelenecektir.</p>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Qualification End -->
+    </section>
 
+    <section id="contact" class="contact">
+        <div class="contact-box">
+            <span class="about-title">İLETİŞİM</span>
+            <h2>Bana Ulaşın</h2>
+            <p style="margin-bottom: 2rem; color: #64748b;">Projeleriniz veya iş fırsatları için aşağıdaki formu kullanabilirsiniz.</p>
+            
+            <form action="mailto:okanmerttan@gmail.com" method="post" enctype="text/plain">
+                <div class="form-group">
+                    <input type="text" name="name" class="form-control" placeholder="Adınız Soyadınız" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" class="form-control" placeholder="E-Posta Adresiniz" required>
+                </div>
+                <div class="form-group">
+                    <textarea name="message" rows="5" class="form-control" placeholder="Mesajınız..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; border:none;">GÖNDER</button>
+            </form>
 
-    <!-- Skill Start -->
-    <div class="container-fluid py-5" id="skill">
-        <div class="container">
-            <div class="position-relative d-flex align-items-center justify-content-center">
-                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Beceri</h1>
-                <h1 class="position-absolute text-uppercase text-primary">Becerilerim</h1>
-            </div>
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <div class="skill mb-4">
-                        <div class="d-flex justify-content-between">
-                            <h6 class="font-weight-bold">Ağ Protokolleri</h6>
-                            <h6 class="font-weight-bold">90%</h6>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <div class="skill mb-4">
-                        <div class="d-flex justify-content-between">
-                            <h6 class="font-weight-bold">Ağ/Bilgisayar Donanımları</h6>
-                            <h6 class="font-weight-bold">75%</h6>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <div class="skill mb-4">
-                        <div class="d-flex justify-content-between">
-                            <h6 class="font-weight-bold">SQL</h6>
-                            <h6 class="font-weight-bold">80%</h6>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="skill mb-4">
-                        <div class="d-flex justify-content-between">
-                            <h6 class="font-weight-bold">Windows/Linux Server</h6>
-                            <h6 class="font-weight-bold">90%</h6>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <div class="skill mb-4">
-                        <div class="d-flex justify-content-between">
-                            <h6 class="font-weight-bold">Kriptoloji </h6>
-                            <h6 class="font-weight-bold">65%</h6>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <div class="skill mb-4">
-                        <div class="d-flex justify-content-between">
-                            <h6 class="font-weight-bold">AWS</h6>
-                            <h6 class="font-weight-bold">70%</h6>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar bg-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <div class="skill mb-4">
-                        <div class="d-flex justify-content-between">
-                            <h6 class="font-weight-bold">Active Directory </h6>
-                            <h6 class="font-weight-bold">85%</h6>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <div class="skill mb-4">
-                        <div class="d-flex justify-content-between">
-                            <h6 class="font-weight-bold">WireShark/TCPDump</h6>
-                            <h6 class="font-weight-bold">90%</h6>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <div class="skill mb-4">
-                        <div class="d-flex justify-content-between">
-                            <h6 class="font-weight-bold">Fortigate</h6>
-                            <h6 class="font-weight-bold">60%</h6>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="skill mb-4">
-                        <div class="d-flex justify-content-between">
-                            <h6 class="font-weight-bold">Python</h6>
-                            <h6 class="font-weight-bold">60%</h6>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <div class="skill mb-4">
-                        <div class="d-flex justify-content-between">
-                            <h6 class="font-weight-bold">Ağ Güvenliği </h6>
-                            <h6 class="font-weight-bold">75%</h6>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <div class="skill mb-4">
-                        <div class="d-flex justify-content-between">
-                            <h6 class="font-weight-bold">Log Analizi</h6>
-                            <h6 class="font-weight-bold">70%</h6>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar bg-info" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                </div>
+            <div class="social-links" style="margin-top: 2rem;">
+                <a href="https://www.linkedin.com/in/okan-mert-tan-810a7b216/" style="background: #0077b5;"><i class="fab fa-linkedin-in"></i></a>
+                <a href="mailto:okanmerttan@gmail.com" style="background: #ea4335;"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.youtube.com/@IT-TECH-OKANMERTTAN" style="background: #ff0000;"><i class="fab fa-youtube"></i></a>
+                <a href="https://github.com/" style="background: #333;"><i class="fab fa-github"></i></a>
             </div>
         </div>
-    </div>
-    <!-- Skill End -->
+    </section>
 
+    <footer>
+        <p>&copy; 2025 Okan Mert TAN. Tüm hakları saklıdır.</p>
+    </footer>
 
-    <!-- Contact Start -->
-    <div class="container-fluid py-5" id="contact">
-        <div class="container">
-            <div class="position-relative d-flex align-items-center justify-content-center">
-                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">İletişim</h1>
-                <h1 class="position-absolute text-uppercase text-primary">İletişim</h1>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="contact-form text-center">
-                        <div id="success"></div>
-                        <form name="sentMessage" id="contactForm" novalidate="novalidate">
-                            <div class="form-row">
-                                <div class="control-group col-sm-6">
-                                    <input type="text" class="form-control p-4" id="name" placeholder="İsim"
-                                        required="required" data-validation-required-message="Lütfen isminizi giriniz." />
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                                <div class="control-group col-sm-6">
-                                    <input type="email" class="form-control p-4" id="email" placeholder="E-mail"
-                                        required="required" data-validation-required-message="Lütfen e-mail giriniz." />
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <input type="text" class="form-control p-4" id="subject" placeholder="Başlık"
-                                    required="required" data-validation-required-message="Lütfen başlık giriniz." />
-                                <p class="help-block text-danger"></p>
-                            </div>
-                            <div class="control-group">
-                                <textarea class="form-control py-3 px-4" rows="5" id="message" placeholder="Mesaj"
-                                    required="required"
-                                    data-validation-required-message="Lütfen mesaj giriniz."></textarea>
-                                <p class="help-block text-danger"></p>
-                            </div>
-                            <div>
-                                <button class="btn btn-outline-primary" type="submit" id="sendMessageButton">Gönder</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Contact End -->
+    <script>
+        // Mobil Menü Aç/Kapa
+        function toggleMenu() {
+            const nav = document.querySelector('.nav-links');
+            nav.classList.toggle('active');
+        }
 
+        // Scroll Animasyonları
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        });
 
-    <!-- Footer Start -->
-    <div class="container-fluid bg-primary text-white mt-5 py-5 px-sm-3 px-md-5">
-        <div class="container text-center py-5">
-            <div class="d-flex justify-content-center mb-4">
-                <a class="btn btn-light btn-social mr-2" href="https://www.youtube.com/@SiberSavunma"><i class="fab fa-youtube"></i></a>
-                <a class="btn btn-light btn-social mr-2" href="https://www.coursera.org/user/fa811804726ce054fc675405adc1ed90"><i class="fab fa-coursera"></i></a>
-                <a class="btn btn-light btn-social mr-2" href="https://www.linkedin.com/in/okan-mert-tan-810a7b216/"><i class="fab fa-linkedin-in"></i></a>
-                <a class="btn btn-light btn-social" href="https://www.instagram.com/okanmert.tan/"><i class="fab fa-instagram"></i></a>
-            </div>  
-            <p class="m-0">&copy; <a class="text-white font-weight-bold" href="#">2024</a>. Bu web sayfası başka bir <a href="READ-ME.txt" style="color: #ffffff;">siteden esinlenmiş</a>. Okan Mert TAN</a>
-            </p>
-        </div>
-    </div>
-    <!-- Footer End -->
-
-    <!-- Scroll to Bottom -->
-    <i class="fa fa-2x fa-angle-down text-white scroll-to-bottom"></i>
-
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-outline-dark px-0 back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
-
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/typed/typed.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/isotope/isotope.pkgd.min.js"></script>
-    <script src="lib/lightbox/js/lightbox.min.js"></script>
-
-    <!-- Contact Javascript File -->
-    <script src="mail/jqBootstrapValidation.min.js"></script>
-    <script src="mail/contact.js"></script>
-
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+        document.querySelectorAll('.card, .timeline-box, .skill-wrapper').forEach((el) => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(20px)";
+            el.style.transition = "all 0.6s ease-out";
+            observer.observe(el);
+        });
+    </script>
 </body>
-
 </html>
